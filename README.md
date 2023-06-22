@@ -35,14 +35,12 @@
   <p align="center">
     Report Generator for Binance Accounts!
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/EyasAnwar/safqti"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/EyasAnwar/safqti/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/EyasAnwar/safqti/issues">Request Feature</a>
   </p>
 </div>
 
@@ -159,4 +157,3 @@ Project Link: [https://github.com/EyasAnwar/safqti](https://github.com/EyasAnwar
 [license-url]: https://github.com/EyasAnwar/safqti/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/eyaskhalil
-[product-screenshot]: images/screenshot.png
