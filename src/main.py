@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 import psycopg
 from tqdm import tqdm
 from repos.OrdersRepository import OrdersRepository
+from repos.SymbolsRepository import SymbolsRepository
 from services.OrdersService import OrdersService
 from services.TransactionsService import TransactionsService
 from utils.DatabaseManager import DatabaseManager
@@ -46,7 +47,7 @@ if __name__ == '__main__':
     parser.add_argument('--fetch_transactions_history', action=argparse.BooleanOptionalAction,
                         help='Fetch Transactions History')
 
-    args = parser.parse_args()
+    args = parser.parse_args(['--generate_trades_report'])
 
     start_time = dt.now()
 
@@ -59,24 +60,29 @@ if __name__ == '__main__':
     db = DatabaseManager.instance()
     db.connect()
 
+    symbolsRepo = SymbolsRepository(client, db)
+
     init_cache(api_key)
 
     if args.fetch_orders_history:
         # ############ Fetch Orders History ####################
-        ordersService = OrdersService(client, db, username)
+        ordersService = OrdersService(client, db, symbolsRepo, username)
         ordersService.fetch_all()
+        end_time = dt.now()
+        duration = end_time - start_time
+        print(duration)
         # #######################################################
 
     if args.generate_trades_report:
         # ############ Calculate Orders  ########################
+        ordersService = OrdersService(client, db, symbolsRepo, username)
         all_trades = ordersService.generate_report()
         cache_results(api_key, all_trades)
+        # Print Open trades
+        print_open_trades(ordersService.trades_module)
         end_time = dt.now()
         duration = end_time - start_time
         print(duration)
-        print(ordersService.trades_module.coin_managers)
-        # Print Open trades
-        print_open_trades(ordersService.trades_module)
         # #######################################################
 
     if args.fetch_transactions_history:
@@ -84,3 +90,6 @@ if __name__ == '__main__':
         start_time = '2019-06-08 00:00:00'
 
         transactionService.process(start_time)
+        end_time = dt.now()
+        duration = end_time - start_time
+        print(duration)

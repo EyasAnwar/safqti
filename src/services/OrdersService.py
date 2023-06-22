@@ -49,7 +49,7 @@ class OrdersService:
             f.flush()
             time.sleep(0.2)
 
-    def process_orders(self, trades, i):
+    def process_orders(self, trades):
         i = 1
         for trade in trades:
             # print(i, trade)

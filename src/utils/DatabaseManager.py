@@ -42,7 +42,6 @@ class DatabaseManager:
             else:
                 cursor.execute(query)
             self.connection.commit()
-            print("Query executed successfully.")
             results = []
             try:
                 results = cursor.fetchall()

@@ -15,7 +15,7 @@ class OrdersRepository:
     def get_orders(self, username):
         orders_sql = 'SELECT symbol, id, orderid, orderlistid, price::REAL, qty::REAL, quoteqty::REAL, commission::REAL, commissionasset, EXTRACT(EPOCH FROM time) * 1000 as time, isbuyer, ismaker, isbestmatch FROM %s WHERE username = \'%s\' ORDER BY time;'
 
-        return self.db.execute_query(orders_sql % self.table_name, username)
+        return self.db.execute_query(orders_sql % (self.table_name, username))
 
     def insert_order(self, username, order):
         order_data = order_mapper(order)

@@ -4,7 +4,8 @@ import time
 
 class SymbolsRepository:
 
-    def __init__(self, db) -> None:
+    def __init__(self, client, db) -> None:
+        self.client = client
         self.db = db
         self.symbols = []
         self.table_name = 'symbols'
@@ -27,11 +28,11 @@ class SymbolsRepository:
                     info = self.client.get_symbol_info(symbol)
                     ticker = {
                         'symbol': info['symbol'],
-                        'baseasset': info['baseasset'],
-                        'quoteasset': info['quoteasset']
+                        'baseasset': info['baseAsset'],
+                        'quoteasset': info['quoteAsset']
                     }
                     self.db.insert_record(self.table_name, ticker)
-                    self.symbols.append(info)
+                    self.symbols.append(ticker)
                 symbol_info = next(
                     item for item in self.get_symbols() if item["symbol"] == symbol)
                 break
