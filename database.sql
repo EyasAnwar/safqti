@@ -1,0 +1,34 @@
+CREATE TABLE orders (
+	symbol VARCHAR(15) NOT NULL,
+	id VARCHAR(10) NOT NULL,
+	username VARCHAR(25) NOT NULL,
+	orderId VARCHAR(10) NOT NULL,
+	orderListId VARCHAR(10) NOT NULL,
+	price DECIMAL(36,18) NOT NULL,
+	qty DECIMAL(36,18) NOT NULL,
+	quoteQty DECIMAL(36,18) NOT NULL,
+	commission DECIMAL(36,18) NOT NULL,
+	commissionAsset VARCHAR(10) NOT NULL,
+	time TIMESTAMP(3) NOT NULL,
+	isBuyer VARCHAR(1) NOT NULL,
+	isMaker VARCHAR(1) NOT NULL,
+	isBestMatch VARCHAR(1) NOT NULL,
+	PRIMARY KEY(symbol, id, orderId)
+);
+
+CREATE TABLE transactions (
+	time TIMESTAMP(3) NOT NULL,
+	username VARCHAR(25) NOT NULL,
+	source VARCHAR(100) NOT NULL,
+	amount DECIMAL(36,18) NOT NULL,
+	asset VARCHAR(10) NOT NULL,
+	type VARCHAR(8) NOT NULL,
+	PRIMARY KEY(time)
+);
+
+CREATE TABLE symbols (
+	symbol VARCHAR(50) NOT NULL,
+	baseasset VARCHAR(20) NOT NULL,
+	quoteasset VARCHAR(20) NOT NULL,
+	PRIMARY KEY(symbol)
+);
