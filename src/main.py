@@ -47,7 +47,6 @@ if __name__ == '__main__':
                         help='Fetch Transactions History')
 
     args = parser.parse_args()
-    print(args)
 
     start_time = dt.now()
 
