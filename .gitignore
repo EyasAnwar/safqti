@@ -5,4 +5,5 @@ __pycache__
 venv
 *.txt
 !requirements.txt
+!LICENSE.txt
 *.pkl
