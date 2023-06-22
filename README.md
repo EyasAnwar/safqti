@@ -33,7 +33,7 @@
   <h3 align="center">Safqti</h3>
 
   <p align="center">
-    Report Generator for Binance Accounts!
+    Analyzing Binance Trades for Profitable Trading Insights.
     <br />
     <a href="https://github.com/EyasAnwar/safqti"><strong>Explore the docs »</strong></a>
     <br />
@@ -59,6 +59,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#contributions">Contributions</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -68,7 +69,17 @@
 
 ## About The Project
 
-I made this project for myself to generate reports for my Binance account, then I decided to publish it as an opensource project for whom have the same needs.
+Safqti is a Python project that leverages the Binance API to fetch and analyze account orders and transactions. It provides a convenient way to connect to the Binance cryptocurrency exchange, fetch historical account data, and store it in a PostgreSQL database. Furthermore, it performs comprehensive analysis on the inserted orders, generating a detailed report that includes crucial trade information such as buy price, sell price, profit, and duration of each trade.
+
+### Features
+
+- **Binance API Integration:** Safqti seamlessly connects to the Binance API, allowing users to access their account data securely and retrieve relevant information for analysis.
+
+- **Order and Transaction Retrieval:** The project fetches all account orders and transactions from a specific date, ensuring comprehensive data coverage for analysis.
+
+- **Database Integration:** Safqti employs a PostgreSQL database to store the fetched orders and transactions, providing a reliable and scalable solution for data storage.
+
+- **Data Analysis and Reporting:** The project offers powerful analysis capabilities to interpret the inserted orders, enabling users to gain valuable insights into their trading activities. The generated report includes essential trade details such as buy price, sell price, profit, and trade duration, facilitating informed decision-making.
 
 <!-- GETTING STARTED -->
 
@@ -86,20 +97,29 @@ Follow the following steps to install and run this project
 
 ### Installation
 
-1. Clone the repo
+1. **Clone the repo**
    ```sh
    git clone https://github.com/EyasAnwar/safqti
    ```
-2. Install Requirements
+2. **Installing Dependencies:** Safqti requires several Python dependencies. Install them by running the following command:
    ```sh
    pip install -r requirements.txt
    ```
-3. Copy .env.example to .env
-4. Enter your API in `.env`
-5. Run
+3. **Setting Up Binance API:** To get started, obtain your Binance API credentials and ensure you have the necessary permissions to access account orders and transactions.
+   - Copy .env.example to .env
+   - Enter your API in `.env`
+4. **Configuring the PostgreSQL Database:** Modify the project's configuration file to specify the PostgreSQL database connection details, such as host, port, username, password, and database name.
+   - You can obtain the schema inside the `database.sql` file.
+5. **Running the Project:** Execute the main script to start the Safqti application. It will connect to the Binance API, fetch orders and transactions, and insert them into the configured PostgreSQL database.
    ```sh
-   python main.py <options>
+   python main.py --fetch_orders_history
    ```
+6. **Generating the Trade Report:** After the data has been inserted into the database, run the analysis script to generate a comprehensive trade report. The report will provide valuable insights into each trade, including buy price, sell price, profit, and duration.
+
+   ```sh
+   python main.py --generate_trades_report
+   ```
+
    <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
@@ -124,11 +144,19 @@ optional arguments:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- Contributions -->
+
+## Contributions
+
+Contributions to Safqti are welcome! If you encounter any issues, have suggestions, or want to add new features, please submit an issue or a pull request. Together, we can enhance this project and make it even more useful for the trading community.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <!-- LICENSE -->
 
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Safqti is open source software released under the MIT License. Feel free to use, modify, and distribute the code according to the terms of this license. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
